@@ -19,7 +19,7 @@ bookmarkRouter
     res.json(bookmarks);
   })
   .post(bodyParser, (req, res) => {
-    const { title, url, rating, desc } = req.body;
+    const { title, url, description, rating } = req.body;
       
     if (!title) {
       logger.error(`Title is required`);
@@ -35,6 +35,13 @@ bookmarkRouter
         .send('Invalid data');
     }
 
+    if (!description) {
+      logger.error(`Description is required`);
+      return res
+        .status(400)
+        .send('Invalid data');
+    }
+
     if (!rating) {
       logger.error(`Rating is required`);
       return res
@@ -42,13 +49,6 @@ bookmarkRouter
         .send('Invalid data');
     }
     
-    if (!desc) {
-      logger.error(`Description is required`);
-      return res
-        .status(400)
-        .send('Invalid data');
-    }  
-
     if (!Number.isInteger(rating) || rating < 0 || rating > 5) {
       logger.error(`Rating must be between 0 and 5`)
       return res
@@ -70,8 +70,8 @@ bookmarkRouter
       id,
       title,
       url,
-      rating,
-      desc
+      description,
+      rating
     };
       
     bookmarks.push(bookmark);
