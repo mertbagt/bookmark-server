@@ -1,28 +1,22 @@
+// const uuid = require('uuid/v4')
+const { v4:uuid }= require('uuid')
+
 const bookmarks = [
-    {
-        id: 0,
-        title: 'Google',
-        url: 'http://www.google.com',
-        description: 'Internet-related services and products.',
-        rating: '3'
-    },
-    {
-        id: 1,
-        title: 'Thinkful',
-        url: 'http://www.thinkful.com',
-        description: '1-on-1 learning to accelerate your way to a new high-growth tech career!',
-        rating: '5'
-    },
-    {
-        id: 2,
-        title: 'Github',
-        url: 'http://www.github.com',
-        description: 'brings together the world\'s largest community of developers.',
-        rating: '4'
-    }
-  ];
-  
-  module.exports = { bookmarks }
+  { id: uuid(),
+    title: 'Thinkful',
+    url: 'https://www.thinkful.com',
+    description: 'Think outside the classroom',
+    rating: 5 },
+  { id: uuid(),
+    title: 'Google',
+    url: 'https://www.google.com',
+    description: 'Where we find everything else',
+    rating: 4 },
+  { id: uuid(),
+    title: 'MDN',
+    url: 'https://developer.mozilla.org',
+    description: 'The only place to find web documentation',
+    rating: 5 },
+]
 
-
-
+module.exports = { bookmarks }
